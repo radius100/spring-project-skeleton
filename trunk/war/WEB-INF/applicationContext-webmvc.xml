@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<!-- Enables convention-based request URL mapping to @Controllers e.g. /hotels/* maps to HotelsController -->
+
+
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping">
+ 		<property name="order" value="1"/>
+	</bean>
+
+
+	<!-- Maps all other request URLs to views -->
+	<!-- Selects view names to render based on the request URI: e.g. the "/intro" URL would map to the view named "intro" -->
+	<bean id="viewMappings" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="defaultHandler">
+			<bean class="org.springframework.web.servlet.mvc.UrlFilenameViewController" />
+		</property>
+	 	<property name="order" value="2"/>
+	</bean>
+
+	<!-- Configures the Tiles layout system -->
+ 	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles2.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/pages/layout/layout.xml</value>
+				<value>/WEB-INF/pages/message/views.xml</value>
+				<!--<value>/WEB-INF/pages/message/views.xml</value>-->
+			</list>
+		</property>
+	</bean>
+
+ 	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="org.springframework.js.ajax.tiles2.AjaxTilesView"/>
+	</bean>
+
+</beans>

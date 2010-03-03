@@ -19,7 +19,8 @@
 	<!-- Activates annotation-based bean configuration -->
 	<context:annotation-config />
 
-	<!--<import resource="applicationContext-config.xml" />-->
+	<import resource="applicationContext-controller.xml" />
+	<import resource="applicationContext-webmvc.xml" />
 	
 	
 	

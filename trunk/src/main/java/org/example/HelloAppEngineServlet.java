@@ -1,20 +1,26 @@
 package org.example;
 
 import java.io.IOException;
-import javax.servlet.http.*;
+import java.util.logging.Logger;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import javax.servlet.http.*;
 
 
 public class HelloAppEngineServlet extends HttpServlet {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(HelloAppEngineServlet.class);
+	private static final long serialVersionUID = 9003286677606959556L;
+	
+	private static final Logger logger = Logger.getLogger(HelloAppEngineServlet.class.getName());
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws IOException {
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/plain");
-		LOGGER.info("Say hello using sfl4j.");
+		
+		logger.info("An informational message.");
+
+		logger.warning("A warning message.");
+
+		logger.severe("An error message.");
+		
 		resp.getWriter().println("Hello, world");
 	}
 }
