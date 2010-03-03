@@ -11,6 +11,8 @@
 	<springVersion>2.5.6</springVersion>
 	<tilesVersion>2.0.6</tilesVersion>
 	<springWebFlowVersion>2.0.4.RELEASE</springWebFlowVersion>
+	
+	<libDirectory>${basedir}/war/WEB-INF/lib</libDirectory>
   </properties>
   
   <dependencies>
@@ -230,12 +232,28 @@
         </configuration>
       </plugin>
 
+	  <plugin>
+	    <artifactId>maven-clean-plugin</artifactId>
+	    <configuration>
+	      <filesets>
+	        <fileset>
+	          <directory>${libDirectory}</directory>
+	          <includes>
+	            <include>**/*.jar</include>
+	          </includes>
+	          <followSymlinks>false</followSymlinks>
+	        </fileset>
+	      </filesets>
+	    </configuration>
+	  </plugin>
+
+
       <plugin>
 		<groupId>org.apache.maven.plugins</groupId>
 		<artifactId>maven-dependency-plugin</artifactId>
 		<executions>
 		    <execution>
-		        <id>copy</id>
+		        <id>copy-libs</id>
 		        <phase>generate-resources</phase>
 		        <goals>
 		            <goal>copy</goal>
@@ -246,100 +264,100 @@
 		                    <groupId>org.springframework</groupId>
 		                    <artifactId>spring-core</artifactId>
 		                    <version>${springVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 		                </artifactItem>
 		                <artifactItem>
 		                    <groupId>org.springframework</groupId>
 		                    <artifactId>spring-webmvc</artifactId>
 		                    <version>${springVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 		                </artifactItem>
 		                <artifactItem>
 							<groupId>org.springframework</groupId>
 							<artifactId>spring-beans</artifactId>
 							<version>${springVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>org.springframework</groupId>
 							<artifactId>spring-context</artifactId>
 							<version>${springVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>org.springframework</groupId>
 							<artifactId>spring-context-support</artifactId>
 							<version>${springVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>org.springframework</groupId>
 							<artifactId>spring-web</artifactId>
 							<version>${springVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 		                
 		                <artifactItem>
 		                    <groupId>commons-logging</groupId>
 		                    <artifactId>commons-logging</artifactId>
 		                    <version>1.1.1</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 		                </artifactItem>
 		                <artifactItem>
 		                    <groupId>commons-digester</groupId>
 		                    <artifactId>commons-digester</artifactId>
 		                    <version>1.6</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 		                </artifactItem>
 		                <artifactItem>
 							<groupId>commons-collections</groupId>
 							<artifactId>commons-collections</artifactId>
 							<version>3.2.1</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>commons-beanutils</groupId>
 							<artifactId>commons-beanutils</artifactId>
 							<version>1.7.0</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						
 						<artifactItem>
 							<groupId>org.springframework.webflow</groupId>
 							<artifactId>org.springframework.binding</artifactId>
 							<version>${springWebFlowVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>org.springframework.webflow</groupId>
 							<artifactId>org.springframework.js</artifactId>
 							<version>${springWebFlowVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>org.springframework.webflow</groupId>
 							<artifactId>org.springframework.webflow</artifactId>
 							<version>${springWebFlowVersion}</version>
-		                    <outputDirectory>war/WEB-INF/lib</outputDirectory>
+		                    <outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						
 		                <artifactItem>
 							<groupId>org.apache.tiles</groupId>
 							<artifactId>tiles-api</artifactId>
 							<version>${tilesVersion}</version>
-							<outputDirectory>war/WEB-INF/lib</outputDirectory>
+							<outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>org.apache.tiles</groupId>
 							<artifactId>tiles-core</artifactId>
 							<version>${tilesVersion}</version>
-							<outputDirectory>war/WEB-INF/lib</outputDirectory>
+							<outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 						<artifactItem>
 							<groupId>org.apache.tiles</groupId>
 							<artifactId>tiles-jsp</artifactId>
 							<version>${tilesVersion}</version>
-							<outputDirectory>war/WEB-INF/lib</outputDirectory>
+							<outputDirectory>${libDirectory}</outputDirectory>
 						</artifactItem>
 		                
 		                <!-- more ... -->
