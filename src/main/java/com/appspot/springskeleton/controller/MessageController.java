@@ -37,9 +37,9 @@ public class MessageController {
 	}
 
     @RequestMapping(value = "message", method = RequestMethod.GET)
-    public String welcomeHandler(ModelMap modelMap) {
+    public String getMessage(ModelMap modelMap) {
     	
-    	logger.info("welcomeHandler");
+    	logger.info("getMessage");
     	
     	modelMap.addAttribute("message", messageService.getNextMessage());
     	
