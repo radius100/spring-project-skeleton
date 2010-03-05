@@ -5,17 +5,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
 	version="2.4">
 	
-  <display-name>New Project Template</display-name>
-  
-  <servlet>
-    <servlet-name>hello</servlet-name>
-    <servlet-class>org.example.HelloAppEngineServlet</servlet-class>
-  </servlet>
-
-  <servlet-mapping>
-    <servlet-name>hello</servlet-name>
-    <url-pattern>/helloappengine</url-pattern>
-  </servlet-mapping>
+    <display-name>Spring Skeleton</display-name>
   
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
